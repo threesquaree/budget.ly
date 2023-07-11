@@ -1,0 +1,112 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+
+@font-face {
+  font-family: 'Poppins';
+  src: url("https://fonts.googleapis.com/css2?family=Poppins&display=swap") format('woff'),
+  /* Add more font formats if necessary */
+}
+
+.font-custom {
+  font-family: 'Poppins', sans-serif;
+}
+
+.text-silver {
+  color: silver;
+}
+
+.bg-off-white {
+  background-color: #f8f8f8;
+}
+
+.btn-primary {
+  background-color: white;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+  padding: 12px 24px; /* Increase the button spacing */
+  font-size: 16px; /* Increase the button size */
+}
+
+.btn-primary:hover {
+  background-color: #512e70;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: white;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+  padding: 12px 24px; /* Increase the button spacing */
+  font-size: 16px; /* Increase the button size */
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tag-sips {
+  background-color: #f3e8ff;
+  color: #8a00ff;
+}
+
+.tag-travel {
+  background-color: #fffaf3;
+  color: #ffb700;
+}
+
+.tag-shopping {
+  background-color: #edf9ff;
+  color: #00b4d8;
+}
+
+.tag-food {
+  background-color: #f9f7e8;
+  color: #ff8500;
+}
+
+.tag-bills {
+  background-color: #e8f8ff;
+  color: #36a3f7;
+}
+
+.tag-selected {
+  background-color: #8a00ff;
+  color: white;
+}
+
+html{
+  background-color: #f8f8f8;
+}
