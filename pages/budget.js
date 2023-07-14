@@ -1,10 +1,21 @@
+
 import { useState } from 'react';
+// import { insertExpense, getAllExpenses } from './mongodb';
+fetch('/api/mongodb')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data); // Handle the fetched data here
+  })
+  .catch((error) => {
+    console.error('Error occurred while fetching data:', error);
+  });
 
 const ExpenseForm = ({ onExpenseAdded }) => {
   const [expenseName, setExpenseName] = useState('');
   const [expenseAmount, setExpenseAmount] = useState('');
   const [selectedTag, setSelectedTag] = useState('');
 
+  
   const handleSubmit = (event) => {
     event.preventDefault();
 
