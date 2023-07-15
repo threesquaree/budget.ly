@@ -16,26 +16,39 @@ const ExpenseForm = ({ onExpenseAdded }) => {
   const [selectedTag, setSelectedTag] = useState('');
 
   
-  const handleSubmit = (event) => {
+  
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Create a new expense object with the selected tag
     const expense = {
       name: expenseName,
       amount: expenseAmount,
       tag: selectedTag,
     };
 
-    // Pass the expense object to the parent component if onExpenseAdded is a valid function
-    if (typeof onExpenseAdded === 'function') {
-      onExpenseAdded(expense);
-    }
+    try {
+      const response = await fetch('/api/mongodb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(expense),
+      });
 
-    // Clear the form inputs and selected tag
+      if (response.ok) {
+        console.log('Expense added successfully!');
+        
+      } else {
+        throw new Error('Error adding expense');
+      }
+    } catch (error) {
+      console.error('Error occurred while adding expense:', error);
+    }
     setExpenseName('');
     setExpenseAmount('');
     setSelectedTag('');
   };
+
 
   const handleTagSelect = (tag) => {
     setSelectedTag(tag);
