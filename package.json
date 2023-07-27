@@ -15,7 +15,7 @@
     "fs": "^0.0.1-security",
     "mongodb": "^5.7.0",
     "next": "latest",
-    "next-auth": "^4.22.2",
+    "next-auth": "^4.22.3",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0"

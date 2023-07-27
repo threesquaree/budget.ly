@@ -7,6 +7,7 @@ export const authOptions = {
     GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        scope: "profile email", // Add 'profile' scope to fetch the user's profile information
     }),
   ],
   session: {
