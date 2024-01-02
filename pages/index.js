@@ -14,8 +14,21 @@ export default function Example() {
   const { data: session, status } = useSession(); // Fetch the user session information
 
 
-  const handleBoxClick = () => {
-    router.push('/budget');
+  const handleBoxClick = (title) => {
+    switch (title) {
+      case 'Budget':
+        router.push('/budget');
+        break;
+      case 'Compare':
+        router.push('/compare');
+        break;
+        case 'Set Your Goal':
+        router.push('/goal');
+        break;
+      // Add more cases for other titles as needed
+      default:
+        // Handle default case or do nothing
+    }
   };
 
   const handleLogout = async () => {
@@ -36,7 +49,6 @@ export default function Example() {
     </svg>),
     description: "Compare and analyze your budget"
   },{
-    title: "Set Your Goal",
     icon: (<svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
     <path d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 1.414-1.414L4.343 2.929a1 1 0 0 0-1.414 1.414l1.414 1.414Zm11.314 8.486a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM4 10a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm15-1h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM4.343 14.243l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0-1.414-1.414ZM14.95 6.05a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 .707 1.707Z"/>
   </svg>),
@@ -99,14 +111,14 @@ export default function Example() {
               </>
             ) : (
               <h1 className="text-white text-2xl">Hey there!</h1>
-            )}
+            )}  
             <p className="text-silver text-m mt-2">We're here to help manage your money!</p>
           </div>
 
       <div className='flex flex-col lg:flex-row gap-3 justify-between'>
       
         {DATA?.map((d, index) => (
-          <div onClick={d.title === 'Budget' ? handleBoxClick : undefined} key={index} class="relative w-1/3 h-60 shadow-md bg-white rounded-lg border border-gray-300 top-40 float-left transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg border border-white border-opacity-10 rounded-lg p-4">
+          <div onClick={() => handleBoxClick(d.title)} key={index} class="relative w-1/3 h-60 shadow-md bg-white rounded-lg border border-gray-300 top-40 float-left transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg border border-white border-opacity-10 rounded-lg p-4">
             <div class="m-6 font-semibold text-2xl">
               {d.icon}
               <div className="flex items-center mt-4">
